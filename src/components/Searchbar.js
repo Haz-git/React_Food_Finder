@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../css/Searchbar.css';
 
 const Searchbar = ({ apiRequest }) => {
 
@@ -15,11 +16,13 @@ const Searchbar = ({ apiRequest }) => {
     }
 
     return (
-        <div className="ui input focus">
-            <form onSubmit={submitHandler}>
-                <input type="text" placeholder="Search..." onChange={handleChange} />
+            <form onSubmit={submitHandler} className="center">
+                <div className="ui input">
+                    <input
+                        type="text" placeholder="Search..." onChange={handleChange} 
+                    />
+                </div>
             </form>
-        </div>
     )
 }
 

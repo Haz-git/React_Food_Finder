@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Item = ({ strMeal, strMealThumb, strArea, strInstructions }) => {
+const Item = ({ strMeal, strMealThumb, strArea }) => {
 
     console.log(strMeal);
 
@@ -14,9 +14,6 @@ const Item = ({ strMeal, strMealThumb, strArea, strInstructions }) => {
                 <a className="header">{strMeal}</a>
                 <div className="meta">
                     <span className="date">{strArea}</span>
-                </div>
-                <div className="description">
-                    {strInstructions}
                 </div>
             </div>
         </div>

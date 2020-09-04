@@ -1,29 +1,48 @@
 import React from 'react';
 import Item from './Item';
+import '../css/Itemlist.css';
 
 const Itemlist = ({ apiResponseData }) => {
 
-    console.log(apiResponseData);
+    const itemListRender = () => {
 
-    const mappedResponse = apiResponseData.map((item) => {
-        
-        const { strMeal, strMealThumb, strArea, strInstructions, idMeal } = item;
+        if (apiResponseData === null) {
 
-        return (
-            <Item 
-                key={idMeal} 
-                strMeal={strMeal} 
-                strMealThumb={strMealThumb} 
-                strArea={strArea} 
-                strInstructions={strInstructions} 
-            />
-        )
-    });
+            const nullResponse = (
+                    <div className="ui floating message">
+                        <p>Sorry! Your Search Didn't Return Any Results! Bummer.</p>
+                    </div>
+            )
+            
+            return nullResponse;
+        } else {
+
+            const mappedResponse = apiResponseData.map((item) => {
+                
+                const { strMeal, strMealThumb, strArea, idMeal } = item;
+
+                return (
+
+                    <div className="four wide column">
+                        <Item 
+                            key={idMeal} 
+                            strMeal={strMeal} 
+                            strMealThumb={strMealThumb} 
+                            strArea={strArea} 
+                        />
+                    </div>
+                )
+            });
+
+            return mappedResponse;
+        }
+
+    }
     
 
     return (
-        <div>
-            {mappedResponse}
+        <div className='ui grid container'>
+            {itemListRender()}
         </div>
     )
 }
