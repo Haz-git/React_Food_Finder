@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Header from './Header';
 import Searchbar from './Searchbar';
-import Axios from 'axios';
+import axios from 'axios';
 import Itemlist from './Itemlist';
 
 const App = () => {
@@ -10,10 +10,8 @@ const App = () => {
 
     const apiRequest = (term) => {
         const requestFunction = async () => {
-            const response = await Axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`);
+            const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`);
             setApiResponseData(response.data.meals);
-
-            console.log(apiResponseData);
         }
 
         requestFunction();
@@ -23,7 +21,7 @@ const App = () => {
         <>
             <Header />
             <Searchbar apiRequest={apiRequest} />
-            {/* <Itemlist apiResponseData={apiResponseData} /> */}
+            <Itemlist apiResponseData={apiResponseData} />
         </>
     )
 }
